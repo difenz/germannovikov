@@ -1,6 +1,3 @@
-document.getElementsByClassName('.footer').style.overflowX = 'hidden';
-document.documentElement.style.overflowX = 'hidden';
-
 document.addEventListener('DOMContentLoaded',function(event){
     // array with texts to type in typewriter
     var dataText = [ "Дизайн.", "Креатив.", "Веб-разработка.", "Герман."];
