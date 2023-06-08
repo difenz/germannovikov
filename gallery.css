@@ -703,8 +703,6 @@ select{
     overflow-x: hidden;
     align-items: center;
     text-align: center;
-    background: #181818;
-    padding: 20px 30px;
     width: 100%;
     max-width:100%;
     height: auto;
@@ -758,7 +756,7 @@ select{
   
   .footer p {
     color: #fff;
-    margin: 15px 0 10px 30px;
+    margin: 15px 0 10px 0px;
     font-size: 1rem;
     font-weight: 300;
   }
