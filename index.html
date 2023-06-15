@@ -218,6 +218,7 @@
                 message += `<b>Номер отправителя:</b> ${this.phone.value}\n`;
                 message += `<b>Тип обращения:</b> ${this.list.value}\n`;
                 message += `<b>Сообщение:</b> ${this.message.value}\n`;
+                telegram.reset();  // Reset all form data
 
                 axios.post(URL_API, {
                     chat_id: CHAT_ID,
