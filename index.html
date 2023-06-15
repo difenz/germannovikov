@@ -145,31 +145,31 @@
     <div class="works"><button class="btn long"><a href="gallery.html">Работы</a></button></div>
     </div>
 </div>
-    <form>
+    <form id="telegram">
         
         <ul class="form-style-1" id="contact">
             <div class="text-center">
                 <h2 class="about">Свяжитесь со мной</h2>
                 </div> 
-            <li><label><span class="required"></span></label><input type="text" name="field1" class="field-divided" placeholder="Имя" /> <input type="text" name="field2" class="field-divided" placeholder="Фамилия" /></li>
+            <li><label><span class="required"></span></label><input type="text" name="name" class="field-divided" placeholder="Имя" /> <input type="text" name="secondName" class="field-divided" placeholder="Фамилия" /></li>
             <li>
-                <li><label><span class="required"></span></label><input type="email" name="field1" class="field-divided" placeholder="Email" /> <input type="tel" name="field2" class="field-divided" placeholder="Номер" /></li>
+                <li><label><span class="required"></span></label><input type="email" name="email" class="field-divided" placeholder="Email" /> <input type="tel" name="phone" class="field-divided" placeholder="Номер" /></li>
                 <li>
             </li>
             <li>
                 <label></label>
-                <select name="field4" class="field-select">
-                <option value="Advertise">Консультация</option>
-                <option value="Partnership">Сотрудничество</option>
-                <option value="General Question">Общее</option>
+                <select name="list" class="field-select">
+                <option value="Консультация">Консультация</option>
+                <option value="Сотрудничество">Сотрудничество</option>
+                <option value="Общее">Общее</option>
                 </select>
             </li>
             <li>
                 <label> <span class="required"></span></label>
-                <textarea name="field5" placeholder="Сообщение" id="field5" class="field-long field-textarea"></textarea>
+                <textarea name="message" placeholder="Сообщение" id="field5" class="field-long field-textarea"></textarea>
             </li>
             <li class="align-center">
-                <input class="btn" type="submit" value="Отправить" />
+                <input class="btn" type="submit" value="Отправить" id="submitButton" onclick="changetoSucces()"/>
             </li>
         </ul>
         </form>
@@ -201,6 +201,32 @@
             </ul>
             <p class="flex">&copy;2023 German Novikov | All Rights Reserved</p>
           </footer>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+          <script>
+
+            
+            const TOKEN = '6299281281:AAF4VqwhbQr2weOMck2Y6Ds8kZZxjgBNJrI';
+            const CHAT_ID = '-1001940028905'
+            const URL_API = `https://api.telegram.org/bot${ TOKEN }/sendMessage`
+
+            document.getElementById('telegram').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                let message = `<b>Заявка с сайта germannovikov.ru</b>\n`;
+                message += `<b>Отправитель:</b> ${this.name.value}\n`;
+                message += `<b>Почта отправителя:</b> ${this.email.value}\n`;
+                message += `<b>Номер отправителя:</b> ${this.phone.value}\n`;
+                message += `<b>Тип обращения:</b> ${this.list.value}\n`;
+                message += `<b>Сообщение:</b> ${this.message.value}\n`;
+
+                axios.post(URL_API, {
+                    chat_id: CHAT_ID,
+                    parse_mode: 'html',
+                    text: message
+                })
+            })
+
+          </script>
           <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
           <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         </div>

@@ -42,3 +42,11 @@ document.addEventListener('DOMContentLoaded',function(event){
   });
 
  
+let submitButton = document.getElementById('submitButton');
+
+function changetoSucces () {
+  submitButton.style.backgroundColor = "#4BB543";
+  submitButton.style.border = "none";
+  submitButton.style.color = "#fff";
+  submitButton.value = "Успешно!";
+}
